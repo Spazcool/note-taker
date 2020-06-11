@@ -1,0 +1,15 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "app.js",
+  "scripts": {
+    "note": "run app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douglas Wright",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
