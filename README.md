@@ -1,5 +1,5 @@
 # Express Note Taker
-An application that can be used to write, save, and delete notes. This application uses an express backend and and mimics a DB with a JSON file.
+An application that can be used to write, save, uppdate and delete notes (i.e. CRUD). This application uses an express backend and and mimics a DB with a JSON file.
 
 <p align="center">
    <img width="70%" height="350vh" src="./images/desktop.gif"/>

@@ -21,7 +21,15 @@ const saveNote = (note) => {
     url: "/api/notes",
     data: note,
     method: "POST",
-    // contentType: "application/json"
+  });
+};
+
+// A function for updating a note to the db
+const updateNote = (note, id) => {
+  return $.ajax({
+    url: "/api/notes/" + id,
+    data: note,
+    method: "POST",
   });
 };
 
@@ -38,29 +46,42 @@ const renderActiveNote = () => {
   $saveNoteBtn.hide();
 
   if (activeNote.id) {
-    $noteTitle.attr("readonly", true);
-    $noteText.attr("readonly", true);
+    $noteTitle.attr("readonly", false);
+    $noteText.attr("readonly", false);
     $noteTitle.val(activeNote.title);
     $noteText.val(activeNote.text);
+    $noteTitle.attr('data-id', activeNote.id);
   } else {
     $noteTitle.attr("readonly", false);
     $noteText.attr("readonly", false);
     $noteTitle.val("");
     $noteText.val("");
+    $noteTitle.attr('data-id', "");
   }
 };
 
 // Get the note data from the inputs, save it to the db and update the view
 const handleNoteSave = function () {
+  let oldID = $noteTitle.attr('data-id') ? $noteTitle.attr('data-id') : '';
+
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
   };
 
-  saveNote(newNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  if(oldID){
+    if (activeNote.id === oldID) {
+      activeNote = {};
+    }
+    updateNote(newNote, oldID).then(() => {
+      getAndRenderNotes();
+    });
+  }else{
+    saveNote(newNote).then(() => {
+      getAndRenderNotes();
+      renderActiveNote();
+    });
+  }
 };
 
 // Delete the clicked note
