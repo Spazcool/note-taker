@@ -14,7 +14,7 @@ An application that can be used to write, save, uppdate and delete notes (i.e. C
 
 1. Clone from the [Repo](https://github.com/Spazcool/note-taker): 
   ```
-  git clone https://github.com/Spazcool/team-builder.git
+  git clone https://github.com/Spazcool/note-taker.git
   ```
 2. Install dependencies:
   ```
